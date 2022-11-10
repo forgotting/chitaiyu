@@ -267,7 +267,7 @@ $(document).ready(function() {
             finish_time: $('#finish_time').val(),
         };
         
-        $.post(URL::to('/punch/ajax_update', array(), true), data, function( result ) {
+        $.post('/punch/ajax_update', data, function( result ) {
             /*$('#calendar').fullCalendar('removeEvents', $('#event_id').val());*/
 
             $('#calendar').fullCalendar('renderEvent', 
