@@ -174,6 +174,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //laravelcalendar self
+        App\Providers\laravel_fullcalendar\src\MaddHatter\LaravelFullcalendar\ServiceProvider::class,
 
     ],
 
@@ -232,6 +234,10 @@ return [
         //install Form
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        //install Calendar
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
+        //Calendar_self
+        'Calendar_self' => App\Providers\laravel_fullcalendar\src\MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
 
     ],
 
