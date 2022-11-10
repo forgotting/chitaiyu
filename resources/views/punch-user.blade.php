@@ -91,8 +91,8 @@
 <!--script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
-<script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
-<script src="{{ asset('js/locale/bootstrap-datepicker.zh-TW.min.js') }}"></script>
+<script src="{{ URL::to('js/bootstrap-datepicker.min.js', array(), true) }}"></script>
+<script src="{{ URL::to('js/locale/bootstrap-datepicker.zh-TW.min.js', array(), true) }}"></script>
 <!--script src="//www.helloweba.net/demo/2017/Fullcalendar/lib/locale/zh-tw.js"></script-->
 @stop
 @section('page-js-script')
@@ -210,7 +210,7 @@ $(document).ready(function() {
                     var getmonth = $('#calendar').fullCalendar('getDate');
                     var year = getmonth.format('YYYY');
                     var month = getmonth.format('MM');
-                    window.location.href = "{{ url('/excel/export/punch/'.Request::route('id')) }}/" + year +"-"+ month;
+                    window.location.href = "{{ URL::to('/excel/export/punch/'.Request::route('id'), array(), true) }}/" + year +"-"+ month;
                 }
             }
         },
@@ -266,8 +266,8 @@ $(document).ready(function() {
             start_time: $('#start_time').val(),
             finish_time: $('#finish_time').val(),
         };
-
-        $.post('/punch/ajax_update', data, function( result ) {
+        
+        $.post(URL::to('/punch/ajax_update', array(), true), data, function( result ) {
             /*$('#calendar').fullCalendar('removeEvents', $('#event_id').val());*/
 
             $('#calendar').fullCalendar('renderEvent', 
