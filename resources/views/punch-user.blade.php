@@ -5,7 +5,7 @@
 
 @section('header')
     @parent
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.min.css') }}"/>
+    <link rel="stylesheet" href="{{ URL::to('css/bootstrap-datepicker3.min.css', array(), true) }}"/>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css"/>
 @endsection
 
