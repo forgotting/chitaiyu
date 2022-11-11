@@ -79,7 +79,10 @@ class PunchController extends AdminController
             2 => '下班',
             3 => '請假',
         ]);
-        $grid->column('created_at', __('建立時間'))->sortable();
+        $grid->column('created_at', __('建立時間'))->display(function ($created_at) {
+            $date = Carbon::parse($created_at);
+            return $date->format('Y-m-d H:i');
+        })->sortable();
         $grid->column('updated_at', __('Updated at'))->hide();
         $grid->actions(function ($actions) {
             $actions->disableView();

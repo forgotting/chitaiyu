@@ -27,8 +27,14 @@ class CheckIpController extends AdminController
         $grid = new Grid(new CheckIp());
         $grid->column('ip', __('IP'));
         $grid->column('iswhite', __('白名單'))->using(['0' => '否', '1' => '是']);
-        $grid->column('created_at', __('建立時間'));
-        $grid->column('updated_at', __('修改時間'));
+        $grid->column('created_at', __('建立時間'))->display(function ($created_at) {
+            $date = Carbon::parse($created_at);
+            return $date->format('Y-m-d H:i');
+        });
+        $grid->column('updated_at', __('修改時間'))->display(function ($updated_at) {
+            $date = Carbon::parse($updated_at);
+            return $date->format('Y-m-d H:i');
+        });
 
         return $grid;
     }
