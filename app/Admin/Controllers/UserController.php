@@ -18,7 +18,6 @@ use Carbon\Carbon;
 use App\Admin\Actions\Punch\Delete;
 use Illuminate\Support\Arr;
 
-
 class UserController extends AdminController
 {
     /**
@@ -221,8 +220,14 @@ class UserController extends AdminController
             return "<span style='color:".$color."'>$email</span>";
         
         });
-        $grid->column('created_at', __('建立時間'));
-        $grid->column('updated_at', __('修改時間'));
+        $grid->column('created_at', __('建立時間'))->display(function ($created_at) {
+            $date = Carbon::parse($created_at);
+            return $date->format('Y-m-d H:i');
+        });
+        $grid->column('updated_at', __('修改時間'))->display(function ($updated_at) {
+            $date = Carbon::parse($updated_at);
+            return $date->format('Y-m-d H:i');
+        });
         $grid->actions(function ($actions) {
             // 去掉删除
             $actions->disableDelete();
@@ -285,4 +290,5 @@ class UserController extends AdminController
 
         return $form;
     }
+
 }
